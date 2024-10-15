@@ -1,0 +1,134 @@
+<% layout("/layouts/boilerplate") -%>
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 0;
+    }
+
+    .form-container {
+        max-width: 600px;
+        margin: 50px auto;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
+        text-align: center;
+        margin-bottom: 20px;
+        color: black;
+    }
+
+    .form-group {
+        margin-bottom: 15px;
+    }
+
+    label {
+        font-weight: bold;
+        color: #333;
+    }
+
+    .form-control {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        font-size: 16px;
+        transition: border-color 0.3s ease;
+    }
+
+    .form-control:focus {
+        border-color: #007bff;
+        outline: none;
+        box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+    }
+
+    .btn-primary {
+        background-color: #007bff;
+        color: white;
+        padding: 10px 15px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+        width: 100%;
+        margin-top: 10px;
+        transition: background-color 0.3s ease;
+    }
+
+    .btn-primary:hover {
+        background-color: #0056b3;
+    }
+
+    .form-group input[type="number"],
+    .form-group input[type="tel"] {
+        -moz-appearance: textfield;
+    }
+
+    .form-group input[type="number"]::-webkit-outer-spin-button,
+    .form-group input[type="number"]::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+</style>
+
+<div class="form-container">
+    <h2>Add New Electrician</h2>
+
+    <form action="/electricians/electricians/new" method="POST">
+        <!-- Electrician Name -->
+        <div class="form-group">
+            <label for="name">Electrician Name:</label>
+            <input type="text" name="name" id="name" class="form-control" required>
+        </div>
+
+        <!-- Location (City/Area) -->
+        <div class="form-group">
+            <label for="location">Location (City/Area):</label>
+            <input type="text" name="location" id="location" class="form-control" required>
+        </div>
+
+        <!-- Charges -->
+        <div class="form-group">
+            <label for="charges">Charges:</label>
+            <input type="number" name="charges" id="charges" class="form-control" min="0" required>
+        </div>
+
+        <!-- Experience -->
+        <div class="form-group">
+            <label for="experience">Years of Experience:</label>
+            <input type="number" name="experience" id="experience" class="form-control" min="0" required>
+        </div>
+
+        <!-- Latitude -->
+        <div class="form-group">
+            <label for="lat">Latitude:</label>
+            <input type="number" step="any" name="lat" id="lat" class="form-control" required>
+        </div>
+
+        <!-- Longitude -->
+        <div class="form-group">
+            <label for="lon">Longitude:</label>
+            <input type="number" step="any" name="lon" id="lon" class="form-control" required>
+        </div>
+
+        <!-- Contact Number -->
+        <div class="form-group">
+            <label for="contactNumber">Contact Number:</label>
+            <input type="tel" name="contactNumber" id="contactNumber" class="form-control" placeholder="+91 XXXXX XXXXX" required>
+        </div>
+
+        <!-- Description -->
+        <div class="form-group">
+            <label for="description">Description:</label>
+            <textarea name="description" id="description" class="form-control" rows="3" required></textarea>
+        </div>
+
+        <!-- Submit Button -->
+        <button type="submit" class="btn" style="background-color: purple; color: white;">Add Electrician</button>
+    </form>
+</div>

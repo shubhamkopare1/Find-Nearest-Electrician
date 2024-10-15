@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Bookings</title>
+    <link rel="stylesheet" href="/path/to/your/styles.css"> <!-- Link your CSS -->
+</head>
+<body>
+    <h1>Your Bookings</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Electrician Name</th>
+                <th>Address</th>
+                <th>Mobile</th>
+                <th>Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% bookings.forEach(booking => { %>
+                <tr>
+                    <td><%= booking.electrician.name %></td>
+                    <td><%= booking.customerAddress %></td>
+                    <td><%= booking.customerMobile %></td>
+                    <td><%= booking.createdAt.toDateString() %></td>
+                </tr>
+            <% }) %>
+        </tbody>
+    </table>
+</body>
+</html>

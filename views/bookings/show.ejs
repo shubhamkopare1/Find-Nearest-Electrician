@@ -1,0 +1,95 @@
+<!-- views/bookings/show.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles.css"> <!-- Link to your CSS file -->
+    <title>Booking Details</title>
+    <style>
+        /* styles.css */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    margin: 0;
+    padding: 20px;
+}
+
+.container {
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+
+h1 {
+    color: #333;
+}
+
+.booking-info {
+    margin-bottom: 20px;
+}
+
+.delete-button {
+    background-color: red;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.delete-button:hover {
+    background-color: darkred;
+}
+
+.alert {
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+}
+
+.alert-danger {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
+.alert-success {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Booking Details</h1>
+
+        <div class="booking-info">
+            <h2>Customer Name: <%= booking.customerName %></h2>
+            <p>Address: <%= booking.customerAddress %></p>
+            <p>Mobile: <%= booking.customerMobile %></p>
+            <p>Electrician: <%= booking.electrician.name %> (Location: <%= booking.electrician.location %>)</p>
+            <p>Charges: <%= booking.electrician.charges %></p>
+        </div>
+
+        <form action="/bookings/<%= booking._id %>?_method=DELETE" method="POST" class="delete-booking-form">
+            <button type="submit" class="delete-button">Cancel Booking</button>
+        </form>
+
+        <% if (locals.error) { %>
+            <div class="alert alert-danger">
+                <%= locals.error %>
+            </div>
+        <% } %>
+
+        <% if (locals.success) { %>
+            <div class="alert alert-success">
+                <%= locals.success %>
+            </div>
+        <% } %>
+
+        <a href="/bookings">Back to Bookings</a>
+    </div>
+</body>
+</html>

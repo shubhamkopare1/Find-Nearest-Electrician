@@ -1,0 +1,133 @@
+
+<style>
+  .collapse{
+      background-color: purple !important;
+  color: white !important;
+  padding: .6rem !important;
+  }
+  .navbar-light .navbar-nav .nav-link {
+  color: white !important;
+}
+.navbar-light .navbar-nav .nav-link.active, .navbar-light .navbar-nav .show>.nav-link {
+  color: white !important;
+}
+.navbar-light .navbar-brand {
+  color: white !important;
+}
+.container-fluid{
+  background-color: purple;
+}
+.navbar{
+  padding: 0 !important;
+}
+.navbar-toggler:focus {
+    outline: none; /* Remove the default focus outline */
+    box-shadow: none; /* Remove any box shadow that might create a border effect */
+    border: none; /* Ensure no border is applied */
+}
+</style>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light custom-navbar">
+<div class="container-fluid">
+  <div>
+      <a class="navbar-brand" href="/home">Electrician</a>
+  </div>
+    
+    <button class="navbar-toggler custom-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>   
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="/electricians">Home</a>
+
+           
+            <li class="nav-item">
+              <a class="nav-link " href="/electricians/new">Add Shop</a>
+            </li>
+            <!-- Conditional rendering for Login/Register or Profile/Logout -->
+            <% if (!currUser) { %>
+              <li class="nav-item">
+                <a class="nav-link" href="/login">Login</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/register">Register</a>
+              </li>
+            <% } else { %>
+              <!-- Profile link for logged-in users -->
+              <li class="nav-item">
+                <a class="nav-link" href="/profiles"><%= currUser.username %>'s Profile</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/logout">Logout</a>
+              </li>
+            <% } %>
+           
+        </ul>
+    </div>
+</div>
+</nav>
+
+<style>
+/* General Navbar Styling */
+.custom-navbar {
+  background-color: #f8f9fa; /* Light background */
+  /* box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);  */
+ 
+}
+
+/* Brand Styling */
+.navbar-brand {
+  font-size: 1.5rem; /* Make the brand name larger */
+  font-weight: bold;
+  color: #007bff; /* Electrician brand in primary blue */
+  letter-spacing: 1px;
+}
+
+/* Navbar Links Styling */
+.custom-nav-link {
+  font-size: 1.1rem; /* Increase the font size */
+  color: #555; /* Darker grey for better contrast */
+  transition: color 0.3s ease-in-out; /* Smooth color transition */
+  margin-right: 1rem; /* Add spacing between links */
+  padding: 0.5rem 1rem; /* Add padding to links for a spacious look */
+  border-radius: 5px; /* Rounded corners for a modern feel */
+}
+
+.custom-nav-link:hover {
+  background-color: #007bff; /* Highlight with primary blue on hover */
+  color: #fff; /* White text on hover */
+}
+
+.custom-nav-link.active {
+  color: #007bff; /* Highlight active link with primary blue */
+  font-weight: 600; /* Make active link bolder */
+}
+
+/* Toggler Icon Styling */
+.custom-toggler {
+  border: none; /* Remove border */
+}
+
+.custom-toggler .navbar-toggler-icon {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'%3E%3Cpath stroke='rgba%280,123,255, 0.7%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+  /* Custom color for the toggler icon */
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .navbar {
+      padding: 1rem; /* Adjust padding for smaller screens */
+  }
+
+  .custom-nav-link {
+      margin-right: 0; /* Remove right margin on smaller screens */
+      margin-bottom: 0.5rem; /* Add some spacing between stacked items */
+      text-align: center;
+  }
+  .navbar-light .navbar-toggler {
+    
+    border-color: purple;
+}
+}
+</style>

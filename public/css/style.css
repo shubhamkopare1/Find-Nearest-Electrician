@@ -1,0 +1,129 @@
+/* General styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+/* Header styles */
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 10px 0;
+    text-align: center;
+}
+
+header h1 {
+    margin: 0;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+}
+
+nav ul li a:hover {
+    text-decoration: underline;
+}
+
+/* Section styles */
+section {
+    padding: 20px;
+    margin: 10px;
+    background-color: #fff;
+    border-radius: 5px;
+}
+
+section#home {
+    text-align: center;
+}
+
+section#home button {
+    padding: 10px 20px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+section#home button:hover {
+    background-color: #555;
+}
+
+/* Map styles */
+#map {
+    height: 500px;
+    width: 100%;
+    margin-top: 20px;
+    border-radius: 5px;
+}
+
+/* Services styles */
+section#services ul {
+    list-style: none;
+    padding: 0;
+}
+
+section#services ul li {
+    margin: 10px 0;
+}
+
+/* Contact form styles */
+form#contactForm {
+    display: flex;
+    flex-direction: column;
+}
+
+form#contactForm label {
+    margin: 5px 0;
+}
+
+form#contactForm input,
+form#contactForm textarea {
+    padding: 10px;
+    margin: 5px 0 15px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+form#contactForm button {
+    padding: 10px 20px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+form#contactForm button:hover {
+    background-color: #555;
+}
+
+/* Footer styles */
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+    width: 100%;
+    bottom: 0;
+    margin-top: 20px; /* Add some margin to create space between content and footer */
+}
+
+@media (max-width: 400px) {
+    p {
+        font-size: 12px;
+    }
+}

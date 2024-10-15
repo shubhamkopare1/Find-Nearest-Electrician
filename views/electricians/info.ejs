@@ -1,0 +1,14 @@
+<!-- views/electrician/details.ejs -->
+<%- layout("layouts/boilerplate") -%>
+
+<section id="electrician-details">
+    <h2><%= electrician.name %></h2>
+    <p>Location: <%= electrician.location %></p>
+    <p>Charges: <%= electrician.charges %> INR</p>
+    <p>Description: <%= electrician.description || "No description available." %></p>
+    <a href="/electricians">Back to Electricians List</a>
+</section>
+
+<footer>
+    <p>&copy; 2024 Electrician Services. All rights reserved.</p>
+</footer>

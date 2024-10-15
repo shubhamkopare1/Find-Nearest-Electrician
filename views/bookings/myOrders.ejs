@@ -1,0 +1,168 @@
+<%- layout("layouts/boilerplate") -%>
+<style>
+    /* Table Styling */
+.table {
+  background-color: #f9f9f9;
+  border-collapse: collapse;
+  width: 100%;
+  border: 1px solid #ddd;
+  margin-bottom: 2rem;
+  font-family: 'Arial', sans-serif;
+}
+
+.table th, .table td {
+  padding: 15px;
+  text-align: center;
+  vertical-align: middle;
+  border-bottom: 1px solid #ddd;
+}
+
+.table th {
+  background-color: #343a40;
+  color: #fff;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+  background-color: #f2f2f2;
+}
+
+.table-hover tbody tr:hover {
+  background-color: #dfe4ea;
+  transition: background-color 0.3s ease;
+}
+
+.table-bordered {
+  border: 1px solid #343a40;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.table .btn {
+  font-size: 0.875rem;
+  padding: 5px 10px;
+}
+
+.table .btn-outline-info {
+  border-color: #17a2b8;
+  color: #17a2b8;
+}
+
+.table .btn-outline-info:hover {
+  background-color: #17a2b8;
+  color: #fff;
+}
+
+.table .btn-outline-danger {
+  border-color: #dc3545;
+  color: #dc3545;
+}
+
+.table .btn-outline-danger:hover {
+  background-color: #dc3545;
+  color: #fff;
+}
+
+/* Badge Styling */
+.badge-success {
+  background-color: #28a745;
+}
+
+.badge-warning {
+  background-color: #ffc107;
+}
+
+.badge-secondary {
+  background-color: #6c757d;
+}
+
+/* Additional Styling */
+.container {
+  max-width: 1200px;
+}
+
+h2 {
+  font-family: 'Arial', sans-serif;
+  letter-spacing: 2px;
+}
+
+hr {
+  border-width: 2px;
+  margin: 1.5rem auto;
+}
+
+.alert {
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+
+.table-responsive {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
+
+</style>
+<div class="container mt-5">
+  <!-- Page Heading -->
+  <div class="text-center mb-5">
+    <h2 class="font-weight-bold text-uppercase">My Orders</h2>
+    <hr class="w-25 mx-auto border-dark">
+  </div>
+
+  <% if (bookings.length === 0) { %>
+    <!-- No Bookings Alert -->
+    <div class="alert alert-warning text-center" role="alert">
+      <strong>No bookings found for you.</strong>
+    </div>
+  <% } else { %>
+    <!-- Orders Table -->
+    <div class="table-responsive shadow">
+      <table  class="table table-striped>
+        <thead class="thead-dark">
+          <tr class="text-center">
+            <th>Customer Name</th>
+            <th>Customer Address</th>
+            <th>Customer Mobile</th>
+            <th>Status</th>
+            <th>Booking Date</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% bookings.forEach(booking => { %>
+            <tr class="text-center">
+              <td><%= booking.customerName %></td>
+              <td><%= booking.customerAddress %></td>
+              <td><%= booking.customerMobile %></td>
+              <td>
+                <span class="badge 
+                  <%= booking.status === 'Completed' ? 'badge-success' : 
+                      booking.status === 'Pending' ? 'badge-warning' : 
+                      'badge-secondary' %>">
+                  <%= booking.status %>
+                </span>
+              </td>
+              <td><%= new Date(booking.createdAt).toLocaleDateString() %></td>
+              <td>
+                <!-- View Button -->
+                <a href="/bookings/<%= booking._id %>" class="btn btn-outline-info btn-sm">
+                  <i class="fas fa-eye"></i> View
+                </a>
+
+                <!-- Cancel Button -->
+                <form action="/bookings/<%= booking._id %>?_method=DELETE" method="POST" class="d-inline">
+                  <button type="submit" class="btn btn-outline-danger btn-sm">
+                    <i class="fas fa-times"></i> Cancel
+                  </button>
+                </form>
+              </td>
+            </tr>
+          <% }) %>
+        </tbody>
+      </table>
+    </div>
+  <% } %>
+</div>
+
+
