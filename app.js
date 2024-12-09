@@ -12,15 +12,16 @@ const LocalStrategy = require("passport-local").Strategy;
 const ExpressError = require("./utils/expressError.js");
 const electricianRoutes = require("./routes/electricians");
 const userRouter = require("./routes/users");
+const reviewRouter = require("./routes/reviews");
 const electricianRouter = require("./routes/userdata.js");
-
+const { isLoggedIn } = require("./middleware.js");
 const User = require("./models/user.js");
 const bookingRoutes = require("./routes/bookings");
 const Electrician = require("./models/electricians");
 const Electricians = require("./models/addElectrician.js");
 const Data = require("./models/addElectrician.js")
 const { isLoggedIns } = require("./middleware.js");
-
+const Review = require("./models/review.js")
 const Booking = require("./models/Booking");
 const app = express();
 const port = 8080;
@@ -37,7 +38,9 @@ app.use(express.json());
 // Connect to MongoDB
 async function main() {
   try {
-    await mongoose.connect('mongodb+srv://shubhamkopare2004:8IPYrnKMZCWCbEbl@cluster0.nzz1e.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0'
+    await mongoose.connect(
+      // 'mongodb+srv://shubhamkopare2004:8IPYrnKMZCWCbEbl@cluster0.nzz1e.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0'
+      'mongodb://127.0.0.1:27017/electric'
     );
     console.log("\n mongoDb database connected successfully ");
   } catch (error) {
@@ -91,6 +94,9 @@ app.use("/electricians", electricianRoutes);
 app.use("/", userRouter);
 app.use("/", electricianRouter);
 app.use("/bookings", bookingRoutes);
+
+app.use("/", reviewRouter);
+
 // app.get('/electricians', async (req, res) => {
 //     const electricians = await Electrician.find(); // Fetch all electricians from the database
 //     res.render('your-template-file', { electricians }); // Pass the electricians array to the EJS template
@@ -109,7 +115,8 @@ app.get("/userHome", isLoggedIns, async (req, res) => {
 app.get("/userLogin", (req, res) => {
   res.render("userLogin/login"); // Render the login form
 });
-app.get("/order/:id", async (req, res) => {
+
+app.get("/order/:id",isLoggedIn, async (req, res) => {
   try {
     const userId = req.user._id; // Assuming the user is logged in and req.user exists
 
@@ -147,8 +154,18 @@ app.get("/book", async (req, res) => {
   console.log("All bookings:", booking);
 });
 
-
-
+app.delete('/reviews/:id', async (req, res) => {
+  try {
+      const reviewId = req.params.id;
+      await Review.findByIdAndDelete(reviewId);
+      req.flash('success', 'Review deleted successfully.'); // Flash message for success
+      res.redirect('/profiles'); // Redirect back to the profile or wherever appropriate
+  } catch (error) {
+      console.error(error);
+      req.flash('error', 'Failed to delete review.'); // Flash message for error
+      res.redirect('/profiles'); // Redirect back to the profile or wherever appropriate
+  }
+});
 app.all("*", (req, res, next) => {
   next(new ExpressError(404, "page is not found"));
 });

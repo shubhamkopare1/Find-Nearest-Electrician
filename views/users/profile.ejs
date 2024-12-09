@@ -1,110 +1,113 @@
 <% layout("/layouts/boilerplate") -%>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f4f4f4;
+    }
+
+    .profile-container {
+        max-width: 800px;
+        margin: 50px auto;
+        background-color: white;
+        border-radius: 10px;
+        padding: 30px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .profile-header {
+        display: flex;
+        align-items: center;
+        margin-bottom: 20px;
+    }
+
+    .profile-header img {
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        margin-right: 20px;
+    }
+
+    .profile-header h2 {
+        font-size: 26px;
+        margin: 0;
+    }
+
+    .profile-info {
+        margin-top: 30px;
+    }
+
+    .profile-info label {
+        font-weight: bold;
+        display: block;
+        margin-bottom: 5px;
+    }
+
+    .profile-info input,
+    .profile-info textarea {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 15px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        font-size: 16px;
+    }
+
+    .profile-info textarea {
+        height: 100px;
+    }
+
+    .profile-info button {
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+    }
+
+    .profile-info button:hover {
+        background-color: #0056b3;
+    }
+
+    .btn-danger {
+        border-radius: 5px;
+        padding: 5px 10px;
+    }
+
+    @media (max-width: 500px) {
+        td {
+            font-size: 0.45rem;
+        }
+
+        th {
+            font-size: 0.45rem;
+        }
+
+        h2 {
+            font-size: 18px;
+        }
+
+        h4 {
+            font-size: 15px;
+        }
+
+        .btn-danger {
+            font-size: 0.5rem;
+            padding: 2px;
+        }
+
+        .profile-header h2,
+        .profile-header h4 {
+            font-size: 10px;
             margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
         }
+    }
+</style>
 
-        .profile-container {
-            max-width: 800px;
-            margin: 50px auto;
-            background-color: white;
-            border-radius: 10px;
-            padding: 30px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-
-        .profile-header {
-            display: flex;
-            align-items: center;
-            margin-bottom: 20px;
-        }
-
-        .profile-header img {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            margin-right: 20px;
-        }
-
-        .profile-header h2 {
-            font-size: 26px;
-            margin: 0;
-        }
-
-        .profile-info {
-            margin-top: 30px;
-        }
-
-        .profile-info label {
-            font-weight: bold;
-            display: block;
-            margin-bottom: 5px;
-        }
-
-        .profile-info input,
-        .profile-info textarea {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 15px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            font-size: 16px;
-        }
-
-        .profile-info textarea {
-            height: 100px;
-        }
-
-        .profile-info button {
-            padding: 10px 20px;
-            background-color: #007bff;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 16px;
-        }
-
-        .profile-info button:hover {
-            background-color: #0056b3;
-        }
-        .btn-danger{
-            border-radius: 5px; 
-            padding: 5px 10px
-
-        }
-        @media (min-width: 0px) and (max-width: 500px) {
-            td{
-                font-size: .45rem;
-            }
-            th{
-                   font-size: .45rem;
-            }
-            h2 {
-           font-size: 18px;
-            }
-            h4{
-                font-size: 15px;
-            }
-            .btn-danger{
-                font-size: .5rem;
-                padding: 2px;
-            }
-            .profile-header h2, 
-.profile-header h4 {
-    font-size: 10px;
-    margin: 0;
-}
-
-
-        }
-    </style>
-</head>
 <body>
-
     <div class="profile-container">
         <!-- Profile Header with Picture and Name -->
         <div class="profile-header">
@@ -112,34 +115,23 @@
             <div>
                 <h2 id="profileName"><%= user.username %></h2>
                 <h4><%= user.email %></h4>
-                
             </div>
         </div>
-
-        
     </div>
 
-   
-  
-    
     <h3>Electrician</h3>
     <br>
-    
-    
+
     <table class="table table-striped">
-        <thead style="    background: rebeccapurple;
-        color: white;">
+        <thead style="background: rebeccapurple; color: white;">
             <tr>
                 <th>Sr No</th>
-                <th>namename</th>
-                <th>location</th>
-                <th>charges</th>
-                <th>contactNumber</th>
-                <th>experience</th>
-                <th>Detete</th>
-                
-                <!-- <th>Status</th>
-                <th>User ID</th> -->
+                <th>Name</th>
+                <th>Location</th>
+                <th>Charges</th>
+                <th>Contact Number</th>
+                <th>Experience</th>
+                <th>Delete</th>
             </tr>
         </thead>
         <tbody>
@@ -151,37 +143,63 @@
                     <td><%= data.charges %></td>
                     <td><%= data.contactNumber %></td>
                     <td><%= data.experience %></td>
-                    <td>   <form action="/data/<%= data._id %>?_method=DELETE" method="POST">
-                        <button type="submit" class="btn btn-danger btn-sm" >
-                          Delete
-                        </button>
-                      </form>
-                    </td> 
-                    
-                  
-                   
-                    
+                    <td>
+                        <form action="/data/<%= data._id %>?_method=DELETE" method="POST">
+                            <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                        </form>
+                    </td>
                 </tr>
             <% }) %>
         </tbody>
     </table>
-    
+
+    <h3>Reviews</h3>
+    <table class="table table-striped">
+        <thead style="background: rebeccapurple; color: white;">
+            <tr>
+                <th>Sr No</th>
+                <th>Comment</th>
+                <th>Rating</th>
+                <th>Date</th> 
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% if (user.reviews && user.reviews.length > 0) { %>
+                <% user.reviews.forEach(function(review, index) { %>
+                    <tr>
+                        <td><%= index + 1 %></td>
+                        <td><%= review.comment %></td>
+                        <td><%= review.rating %> / 5</td>
+                        <td><%= new Date(review.createdAt).toLocaleDateString() %></td> <!-- Format date -->
+                        <td>
+                            <form action="/reviews/<%= review._id %>?_method=DELETE" method="POST">
+                                <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                            </form>
+                        </td>
+                    </tr>
+                <% }) %>
+            <% } else { %>
+                <tr>
+                    <td colspan="4">No reviews yet.</td>
+                </tr>
+            <% } %>
+        </tbody>
+    </table>
 
     <script>
         function updateProfile() {
             // Get values from input fields
             const name = document.getElementById('name').value;
             const email = document.getElementById('email').value;
-            const bio = document.getElementById('bio').value;
 
             // Update the profile display area
             document.getElementById('profileName').innerText = name;
-            document.getElementById('profileBio').innerText = bio;
+            document.getElementById('profileEmail').innerText = email;
 
             // You can perform further actions such as sending the data to a backend
             alert("Profile Updated Successfully!");
         }
     </script>
-
 </body>
 </html>

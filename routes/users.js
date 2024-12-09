@@ -52,6 +52,10 @@ router.get('/logout', (req, res, next) => {
         res.redirect('/login'); // Redirect to login after logout
     });
 });
+async function getUserWithReviews(userId) {
+    const user = await User.findById(userId).populate('reviews'); // Populate the reviews field
+    return user;
+}
 // Profile Route
 router.get('/profiles', async (req, res) => {
     if (!req.isAuthenticated()) {
@@ -59,10 +63,10 @@ router.get('/profiles', async (req, res) => {
         return res.redirect('/login');
     }
     const userId = req.user._id;
-
+    const userWithReviews = await getUserWithReviews(userId);
 
     const data = await Data.find({userId :userId })
-    res.render('users/profile', { user: req.user , data});
+    res.render('users/profile', { user: userWithReviews , data});
 });
 
 // Delete Profile Route
