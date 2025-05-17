@@ -39,8 +39,8 @@ app.use(express.json());
 async function main() {
   try {
     await mongoose.connect(
-      // 'mongodb+srv://shubhamkopare2004:8IPYrnKMZCWCbEbl@cluster0.nzz1e.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0'
-      'mongodb://127.0.0.1:27017/electric'
+       'mongodb+srv://shubhamkopare2004:8IPYrnKMZCWCbEbl@cluster0.nzz1e.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0'
+      //'mongodb://127.0.0.1:27017/electric'
     );
     console.log("\n mongoDb database connected successfully ");
   } catch (error) {
